@@ -1,0 +1,5 @@
+@import "fonts.css";
+
+body {
+  font: normal 2rem/1.2 MonoLisa, monospace;
+}

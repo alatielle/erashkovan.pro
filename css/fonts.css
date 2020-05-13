@@ -1,0 +1,19 @@
+@font-face {
+  font-weight: normal;
+  font-family: "MonoLisa";
+  font-style: normal;
+  font-display: fallback;
+
+  src: url("../fonts/MonoLisa-Regular.woff2") format("woff2"),
+    url("../fonts/MonoLisa-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-weight: bold;
+  font-family: "MonoLisa";
+  font-style: normal;
+  font-display: fallback;
+
+  src: url("../fonts/MonoLisa-Bold.woff2") format("woff2"),
+    url("../fonts/MonoLisa-Bold.woff") format("woff");
+}
