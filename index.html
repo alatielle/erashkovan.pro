@@ -11,7 +11,7 @@
       <header class="layout__header">
         <h1 class="visually-hidden">Personal page of Elena Rashkovan</h1>
         <label class="switch">
-          <input type="checkbox" checked onchange="toggleTheme(event)" />
+          <input type="checkbox" />
           <span class="switch__button"></span>
           <span class="visually-hidden">Dark mode</span>
         </label>
@@ -22,12 +22,36 @@
           <p>Hello!</p>
           <p>I'm Lena, frontend developer at&nbsp;Yandex.</p>
           <p>
-            Reach&nbsp;me by&nbsp;<a href="mailto:hello@erashkovan.pro">hello@<wbr />erashkovan.pro</a>
+            Reach&nbsp;me by&nbsp;<a href="mailto:hello@erashkovan.pro"
+              >hello@<wbr />erashkovan.pro</a
+            >
           </p>
         </div>
       </main>
     </div>
+    <script>
+      const input = document.querySelector(".switch input");
 
+      if (input) {
+        const darkModeSetting = localStorage.getItem("isDarkModeOn");
+
+        try {
+          const isDarkMode =
+            darkModeSetting === null ? false : JSON.parse(darkModeSetting);
+
+          if (isDarkMode) {
+            input.checked = true;
+            document.body.classList.add("dark-theme");
+          }
+        } catch (error) {}
+
+        input.addEventListener("change", () => {
+          document.body.classList.toggle("dark-theme");
+
+          localStorage.setItem("isDarkModeOn", JSON.stringify(input.checked));
+        });
+      }
+    </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const typewriter = document.querySelector(".typewriter");
@@ -54,7 +78,7 @@
                 i += tagLength;
                 pause = 0;
               }
-            } else if (currentChar === '&') {
+            } else if (currentChar === "&") {
               let mnenonicLength = text.substring(i, text.length).indexOf(";");
 
               if (mnenonicLength !== -1) {
@@ -86,11 +110,6 @@
 
         startTextAnimation(0);
       });
-    </script>
-    <script>
-      function toggleTheme() {
-        document.body.classList.toggle("dark-theme");
-      }
     </script>
   </body>
 </html>

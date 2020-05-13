@@ -40,7 +40,6 @@
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   width: 0.6em;
   height: 1em;
   border: 0.08em solid currentColor;
@@ -49,32 +48,34 @@
 
 .switch__button::before,
 .switch__button::after {
-  border-top: 0.08em solid currentColor;
-  border-bottom: 0 solid currentColor;
+  border-bottom: 0.08em solid currentColor;
+  border-top: 0 solid currentColor;
 
   content: "";
 }
 
 .switch__button::before {
-  height: 33%;
+  height: 66%;
 }
 
 .switch__button::after {
-  height: 60%;
-}
-
-.switch input:checked + .switch__button {
-  justify-content: flex-start;
+  height: 33%;
 }
 
 .switch input:checked + .switch__button::before {
-  height: 1em;
-  border-top-width: 0;
-  border-bottom-width: 0.08em;
+  height: 33%;
 }
 
 .switch input:checked + .switch__button::after {
-  height: 0.5em;
-  border-top-width: 0;
-  border-bottom-width: 0.08em;
+  height: 66%;
+}
+
+.switch input:checked + .switch__button {
+  justify-content: flex-end;
+}
+
+.switch input:checked + .switch__button::before,
+.switch input:checked + .switch__button::after {
+  border-bottom-width: 0;
+  border-top-width: 0.08em;
 }
