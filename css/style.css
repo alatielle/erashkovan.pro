@@ -1,5 +1,26 @@
 @import "fonts.css";
+@import "layout.css";
+@import "scaffolding.css";
+@import "variables.css";
+@import "blocks/index.css";
 
 body {
+  margin: 0;
+  overflow: hidden;
+
   font: normal 2rem/1.2 MonoLisa, monospace;
+  color: var(--color-typo-default);
+  background-color: var(--color-bg-default);
+
+  transition: color, background-color ease-in 0.15s;
+}
+
+a {
+  color: var(--color-typo-link);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+p {
+  margin: 0.8em 0;
 }

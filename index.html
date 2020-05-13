@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <title>It Works!</title>
-</head>
-<body>
-  <h1>It Works!</h1>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Elena Rashkovan</title>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="layout__header">
+        <h1 class="visually-hidden">Personal page of Elena Rashkovan</h1>
+        <label class="switch">
+          <input type="checkbox" checked onchange="toggleTheme(event)" />
+          <span class="switch__button"></span>
+          <span class="visually-hidden">Dark mode</span>
+        </label>
+      </header>
+
+      <main class="layout__main">
+        <div class="typewriter">
+          <p>Hello!</p>
+          <p>I'm Lena, frontend developer at&nbsp;Yandex.</p>
+          <p>
+            Reach&nbsp;me by&nbsp;<a href="mailto:hello@erashkovan.pro">hello@<wbr />erashkovan.pro</a>
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const typewriter = document.querySelector(".typewriter");
+
+        const DEFAULT_PAUSE = 100;
+        const PUNCTUATION_PAUSE = 350;
+        const NEW_PARAGRAPH_PAUSE = 700;
+
+        const dataText = [...typewriter.children]
+          .filter(child => child instanceof HTMLParagraphElement)
+          .map(p => p.innerHTML.trim().replace(/\s{2,}/g, " "));
+
+        typewriter.innerHTML = "";
+
+        function type(p, text, i, callback) {
+          if (i < text.length) {
+            let pause = DEFAULT_PAUSE;
+            const currentChar = text.charAt(i);
+
+            if (currentChar === "<") {
+              let tagLength = text.substring(i, text.length).indexOf(">");
+
+              if (tagLength !== -1) {
+                i += tagLength;
+                pause = 0;
+              }
+            } else if (currentChar === '&') {
+              let mnenonicLength = text.substring(i, text.length).indexOf(";");
+
+              if (mnenonicLength !== -1) {
+                i += mnenonicLength;
+                pause = 0;
+              }
+            } else if (/[,:;]/.test(currentChar)) {
+              pause = PUNCTUATION_PAUSE;
+            }
+
+            p.innerHTML = text.substring(0, i + 1);
+
+            setTimeout(() => {
+              type(p, text, i + 1, callback);
+            }, pause);
+          } else {
+            setTimeout(callback, NEW_PARAGRAPH_PAUSE);
+          }
+        }
+
+        function startTextAnimation(i) {
+          if (dataText[i] && i < dataText[i].length) {
+            let p = document.createElement("p");
+
+            typewriter.append(p);
+            type(p, dataText[i], 0, () => startTextAnimation(i + 1));
+          }
+        }
+
+        startTextAnimation(0);
+      });
+    </script>
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("dark-theme");
+      }
+    </script>
+  </body>
 </html>

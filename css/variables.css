@@ -1,0 +1,12 @@
+:root {
+  --color-bg-default: #fff;
+  --color-typo-default: #222;
+  --color-typo-link: #0000ee;
+  --color-caret: #ff8c00;
+}
+
+.dark-theme {
+  --color-bg-default: #222;
+  --color-typo-default: #fff;
+  --color-typo-link: #00ff00;
+}

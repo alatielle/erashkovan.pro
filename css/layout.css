@@ -1,0 +1,18 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 100vh;
+  padding: 1em;
+}
+
+.layout__header {
+  position: absolute;
+  right: 1em;
+}
+
+.layout__main {
+  margin: auto;
+}
