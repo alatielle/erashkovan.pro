@@ -2,17 +2,50 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  box-sizing: border-box;
   min-width: 0;
   min-height: 100vh;
-  padding: 1em;
 }
 
 .layout__header {
   position: absolute;
+  top: 1em;
   right: 1em;
 }
 
 .layout__main {
-  margin: auto;
+  padding: 0.5em;
+}
+
+.layout__left {
+  box-sizing: border-box;
+  height: 50vh;
+  padding: 0.5em;
+}
+
+.layout__right {
+  padding: 0.5em;
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+@media screen and (min-width: 720px) {
+  .layout__main {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+  }
+
+  .layout__left {
+    width: 25vw;
+    height: auto;
+    max-height: 75vh;
+    flex-shrink: 0;
+  }
+
+  .layout__right {
+    margin: auto 0;
+
+    text-align: left;
+  }
 }

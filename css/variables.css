@@ -1,12 +1,27 @@
 :root {
   --color-bg-default: #fff;
-  --color-typo-default: #222;
+  --color-typo-default: #232323;
   --color-typo-link: #0000ee;
+  --color-typo-grey: #aaa;
   --color-caret: #ff8c00;
 }
 
 .dark-theme {
-  --color-bg-default: #222;
+  --color-bg-default: #232323;
   --color-typo-default: #fff;
   --color-typo-link: #00ff00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-default: #232323;
+    --color-typo-default: #fff;
+    --color-typo-link: #00ff00;
+  }
+
+  body:not(.dark-theme) {
+    --color-bg-default: #fff;
+    --color-typo-default: #232323;
+    --color-typo-link: #0000ee;
+  }
 }
