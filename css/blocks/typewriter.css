@@ -1,10 +1,9 @@
 .typewriter p::after {
-  content: " ";
-  white-space: pre;
+  content: "|";
+  color: transparent;
 }
 
 .typewriter p:last-of-type::after {
-  content: "|";
   color: var(--color-caret);
   animation: blink-caret 1s steps(1) infinite;
 }
